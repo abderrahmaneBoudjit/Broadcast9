@@ -1,18 +1,18 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var prefix = "$"
-var adminprefix = '$'
+var prefix = "!"
+var adminprefix = '!'
 
 
 //bc
 
 client.on("message", message => {
-    if (message.content.startsWith("$obc")) {
+    if (message.content.startsWith("!obc")) {
                  if (!message.member.hasPermission("ADMINISTRATOR"))  return;
   let args = message.content.split(" ").slice(1);
   var argresult = args.join(' ');
   message.guild.members.filter(m => m.presence.status !== 'all').forEach(m => {
-  m.send(`${argresult}\n ${m}`);
+  m.send(`!{argresult}\n !{m}`);
   })
   message.channel.send(`\`${message.guild.members.filter( m => m.presence.status !== 'all').size}\`:mailbox:  عدد المستلمين `);
   message.delete();
@@ -23,7 +23,7 @@ client.on("message", message => {
 //bc online
 
 
-  var prefix = "$";
+  var prefix = "!";
 
   client.on("message", message => {
   
@@ -32,7 +32,7 @@ client.on("message", message => {
     let args = message.content.split(" ").slice(1);
     var argresult = args.join(' '); 
     message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
-   m.send(`${argresult}\n ${m}`);
+   m.send(`!{argresult}\n !{m}`);
   })
    message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` :mailbox:  عدد المستلمين `); 
    message.delete(); 
@@ -41,7 +41,7 @@ client.on("message", message => {
 
 client.on('message', message => {
     var  user = message.mentions.users.first() || message.author;
-if (message.content.startsWith("$avatar")) {
+if (message.content.startsWith("!avatar")) {
 message.channel.send(`This avatar For ${user} link : ${user.avatarURL}`);
 }
 });
@@ -72,17 +72,17 @@ m.sendMessage(args)
   
   
   client.on("message", message => {
-    if (message.content === "$help") {
+    if (message.content === "!help") {
      const embed = new Discord.RichEmbed() 
          .setColor("#00FF00")
          .setThumbnail(message.author.avatarURL)
          .setDescription(`**Help|هيلب
 
-       $obc | لأرسال برود كاست للكل
+       !obc | لأرسال برود كاست للكل
 
-       $bc  |  لأرسال برود كاست للأونلاين
+       !bc  |  لأرسال برود كاست للأونلاين
 
-       $adminbc | برودكاست عادي
+       !adminbc | برودكاست عادي
 
        ** `)
    message.author.sendEmbed(embed)
@@ -90,7 +90,7 @@ m.sendMessage(args)
    }
    });
 
-const developers = ["472413769700474901","id"]
+const developers = ["549961779959037963","id"]
 client.on('message', message => {
     var argresult = message.content.split(` `).slice(1).join(' ');
       if (!developers.includes(message.author.id)) return;
